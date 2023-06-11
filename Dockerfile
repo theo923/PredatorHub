@@ -2,7 +2,7 @@
 FROM python:3.9 as backend
 WORKDIR /app
 RUN apt-get update && \
-    apt-get install -y git && \
+    apt-get install -y git libmariadb-dev-compat && \
     git clone https://github.com/theo923/predatorhub-python.git ./
 RUN pip install --no-cache-dir -r requirements.txt
 
@@ -21,12 +21,18 @@ RUN yarn build
 FROM nginx:1.19.0-alpine
 # Install Python
 RUN apk add --update python3 py3-pip
+ENV MYSQL_HOST 1 \
+    MYSQL_PORT 1 \
+    MYSQL_USER 1 \
+    MYSQL_PASSWORD 1 \
+    MYSQL_DB 1 \
+    MYSQL_DATABASE_CHARSET 1
 COPY --from=frontend /app/dist /var/www/html
 COPY --from=backend /app /app
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY ./start.sh /app/
 RUN chmod +x /app/start.sh
-RUN pip3 install --no-cache-dir -r /app/requirements.txt
+RUN apk add --no-cache mariadb-dev build-base python3-dev && pip3 install --no-cache-dir -r /app/requirements.txt
 
 EXPOSE 80
 

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>PredatorHub</Name>
+  <Repository>theotam999/predatorhub</Repository>
+  <Registry>https://hub.docker.com/r/theotam999/predatorhub/</Registry>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+  <Project>https://github.com/theo923/predatorhub-python/</Project>
+  <Overview>PredatorHub is a customized frontend application, you can add your favourite bookmarks into it. It requires a MariaDB/MySQL database to function.</Overview>
+  <Category>Productivity:WebApp</Category>
+  <WebUI>http://[IP]:[PORT:8760]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/selfhosters/unRAID-CA-templates/master/templates/predatorhub.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/theo923/predatorhub-react/master/public/icont.png</Icon>
+  <Config Name="PREDATORHUB_PORT" Target="8080" Default="8760" Mode="tcp" Description="Container Port: 8760" Type="Port" Display="always" Required="true" Mask="false"/>
+  <Config Name="MYSQL_HOST" Target="MYSQL_HOST" Default="localhost" Description="Container Variable: Database Host" Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="MYSQL_USER" Target="MYSQL_USER" Default="predatorhub" Description="Container Variable: Database User" Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="MYSQL_PASSWORD" Target="MYSQL_PASSWORD" Default="predatorhub" Description="Container Variable: Database Password" Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="MYSQL_DB" Target="MYSQL_DB" Default="predatorhub" Description="Container Variable: Database Name" Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="MYSQL_PORT" Target="MYSQL_PORT" Default="3306" Description="Container Variable: Database Port" Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="MYSQL_DATABASE_CHARSET" Target="MYSQL_DATABASE_CHARSET" Default="utf8mb4" Description="Container Variable: Database Charset" Type="Variable" Display="always" Required="true" Mask="false"/>
+</Container>
